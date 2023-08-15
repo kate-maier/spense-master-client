@@ -276,3 +276,40 @@ main {
 .button-save:hover {
   opacity: 80%;
 }
+
+/* ANALYSE */
+
+.analyse {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.analyse-diagram {
+  width: 400px;
+}
+
+
+.analyse-form {
+  margin-top: 20px;
+}
+
+.analyse-select {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.analyse-select select {
+  cursor: pointer;
+  outline: none;
+}
+
+.analyse-select button {
+  background-color: #c89fc2;
+}
+
+.analyse-select button:hover {
+  opacity: 80%;
+}
