@@ -162,3 +162,117 @@ header {
   font-weight: 700;
   font-size: 18px;
 }
+
+
+
+/* form */
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.userEnterBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.userEnterBtns button {
+  width: 300px;
+  height: 40px;
+  cursor: pointer;
+}
+
+footer {
+  height: 50px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* dasboard */
+
+ul {
+  list-style: none;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 95vh;
+  width: 60%;
+  background: url(./img/background.png) no-repeat top right / auto 100%;
+}
+
+.wrapper {
+  z-index: 2;
+  width: 1320px;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(228.57deg, #dbcfda 11.93%, #d8cbd8 57.17%, #aa7fb9 87.46%);
+  border-radius: 1500px/100px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.input-wrapper div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input {
+  width: 200px;
+  height: 40px;
+  font-size: 18px;
+  outline: none;
+  border: 0.5px solid #000;
+  text-align: right;
+  padding: 0 5px;
+}
+
+.input:hover {
+  background-color: #efefef;
+}
+
+.input::placeholder {
+  font-size: 14px;
+}
+
+.select-categories {
+  height: 40px;
+  width: 200px;
+  font-size: 16px;
+  padding: 0 10px;
+  margin-bottom: 5px;
+  border: 0.5px solid #000;
+  outline: none;
+  cursor: pointer;
+}
+
+.button-save {
+  height: 40px;
+  width: 150px;
+  background-color: #c89fc2;
+}
+
+.button-save:hover {
+  opacity: 80%;
+}
