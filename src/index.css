@@ -313,3 +313,25 @@ main {
 .analyse-select button:hover {
   opacity: 80%;
 }
+
+/* HISTORY */
+
+.expenses-list {
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 30px;
+}
+
+.expenses-list li {
+  padding: 10px 35px 10px 10px;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  border: 2px solid #5a3153;
+}
+
+.expense-date {
+  font-weight: 700;
+}
+
