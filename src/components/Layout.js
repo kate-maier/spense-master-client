@@ -5,13 +5,12 @@ import { Outlet } from 'react-router-dom';
 export default function Layout() {
     return (
         <div className="container">
-            <main>
+            <div className='inner-container'>
                 <div className='background'></div>
                 <div className='wrapper'>
                     <Outlet />
                 </div>
-            </main>
-
+            </div>
             <Footer />
         </div>
     )

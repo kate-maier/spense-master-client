@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logotype from './Logotype';
 
@@ -7,7 +7,6 @@ import Logotype from './Logotype';
 const History = () => {
     const [expensesData, setExpensesData] = useState(null);
 
-    useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost:5000/api/history');
@@ -18,7 +17,6 @@ const History = () => {
             }
         };
         fetchData();
-    }, [])
 
    
     return (

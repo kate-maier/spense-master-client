@@ -1,24 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logotype from './Logotype';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 function Dashboard() {
     const [calculations, setCalculations] = useState({});
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/api/calculations');
-                const data = await response.json();
-                setCalculations(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
-    }, [])
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/calculations');
+            const data = await response.json();
+            setCalculations(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    fetchData();
 
     return (
         <>
@@ -50,11 +48,11 @@ function Dashboard() {
                     </Link>
                 </div>
                 <div className='data-text'>
-                    <p >Дохід за місяць: <span>{calculations.monthIncomes}</span></p>
+                    <p>Дохід за місяць: <span>{calculations.monthIncomes}</span></p>
                     <p>Витрачено за місяць: <span>{calculations.monthExpenses}</span></p>
                     <p>Залишок коштів: <span>{calculations.balanceMoney}</span></p>
                 </div>
-                </div>
+            </div>
         </>
     )
 }

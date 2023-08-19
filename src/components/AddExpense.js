@@ -10,7 +10,7 @@ function AddExpense() {
     const [errors, setErrors] = useState({
         amount: '',
         category: '',
-        saveError: ''
+        error: ''
     });
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -23,7 +23,7 @@ function AddExpense() {
         if (!(/^[1-9]\d*(\.\d{1,2})?$/.test(value))) {
             setErrors({ ...errors, amount: 'Заповніть коректно поле "Сума"' });
         } else {
-            setErrors({ ...errors, amount: '', saveError: '' })
+            setErrors({ ...errors, amount: '', error: '' })
         }
     }
 
@@ -35,7 +35,7 @@ function AddExpense() {
         if (value === 'default') {
             setErrors({ ...errors, category: 'Оберіть категорію' })
         } else {
-            setErrors({ ...errors, category: '', saveError: '' })
+            setErrors({ ...errors, category: '', error: '' })
         }
     }
 
@@ -43,7 +43,7 @@ function AddExpense() {
         event.preventDefault();
 
         if (!(/^[1-9]\d*(\.\d{1,2})?$/.test(expensesAmount)) || expensesAmount.trim() === '' || expensesCategory === 'default') {
-            setErrors({ ...errors, saveError: 'Заповніть поле сума та оберіть категорію' })
+            setErrors({ ...errors, error: 'Заповніть поле сума та оберіть категорію' })
             return;
         }
 
@@ -108,7 +108,7 @@ function AddExpense() {
                     <div>
                     {errors.amount && <p className='error'>{errors.amount}</p>}
                     {errors.category && <p className='error'>{errors.category}</p>}
-                    {errors.saveError && <p className='error'>{errors.saveError}</p>}
+                    {errors.error && <p className='error'>{errors.error}</p>}
                     {successMessage && <p>{successMessage}</p>}
                     </div>
                 </div>

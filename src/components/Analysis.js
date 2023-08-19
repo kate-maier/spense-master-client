@@ -15,32 +15,7 @@ function Analysis() {
   const [yearsData, setYearsData] = useState([]);
   const [choosedMonth, setChoosedMonth] = useState('');
   const [choosedYear, setChoosedYear] = useState('');
-
   const [error, setError] = useState(null);
-
-  function addData(event) {
-    event.preventDefault();
-
-    if (choosedMonth === '' || choosedYear === '') {
-      setError('Оберіть рік та місяць')
-      return;
-    }
-
-    const apiUrl = 'http://localhost:5000/api/analysis-new';
-
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ month: choosedMonth, year: choosedYear }),
-    })
-      .then(response => response.json())
-      .then(processedData => {
-        setExpensesData(processedData)
-      })
-      .catch((error) => console.error('Error: ', error))
-  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +30,43 @@ function Analysis() {
     };
     fetchData();
   }, [])
+
+
+  
+  function saveMonth(event) {
+    const value = event.target.value;
+
+    setChoosedMonth(value)
+  }
+
+  function saveYear(event) {
+    const value = event.target.value;
+
+    setChoosedYear(value)
+  }
+
+
+  function addData(event) {
+    event.preventDefault();
+
+    if (choosedMonth === '' || choosedYear === '') {
+      setError('Оберіть рік та місяць')
+      return;
+    }
+
+    fetch('http://localhost:5000/api/analysis-new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ month: choosedMonth, year: choosedYear }),
+    })
+      .then(response => response.json())
+      .then(processedData => {
+        setExpensesData(processedData)
+      })
+      .catch((error) => console.error('Error: ', error))
+  }
 
 
   useEffect(() => {
@@ -93,18 +105,6 @@ function Analysis() {
     })
   }, [expensesData]);
 
-  function saveMonth(event) {
-    const value = event.target.value;
-
-    setChoosedMonth(value)
-  }
-
-  function saveYear(event) {
-    const value = event.target.value;
-
-    setChoosedYear(value)
-  }
-
 
   return (
     <>
@@ -136,31 +136,31 @@ function Analysis() {
       <form onSubmit={addData} className='analyse-form'>
         <h2>Проаналізувати витрати за місяць:</h2>
         <div className='analyse-select'>
-        <select onChange={saveMonth}>
-          <option value="default">Обрати місяць</option>
-          <option value="january">Січень</option>
-          <option value="february">Лютий</option>
-          <option value="march">Березень</option>
-          <option value="april">Квітень</option>
-          <option value="may">Тривень</option>
-          <option value="june">Червень</option>
-          <option value="july">Липень</option>
-          <option value="august">Серпень</option>
-          <option value="september">Вересень</option>
-          <option value="october">Жовтень</option>
-          <option value="november">Листопад</option>
-          <option value="december">Грудень</option>
-        </select>
-        <select onChange={saveYear}>
-          <option value="default">Обрати рік</option>
-          {yearsData && yearsData.map((expense, index) => (
-            <option key={index} value={expense}
-            >{expense}
-            </option>
-          ))}
-        </select>
-        <button type='submit'>Вивести дані</button>
-        {error && <p className='error'>{error}</p>}
+          <select onChange={saveMonth}>
+            <option value="default">Обрати місяць</option>
+            <option value="january">Січень</option>
+            <option value="february">Лютий</option>
+            <option value="march">Березень</option>
+            <option value="april">Квітень</option>
+            <option value="may">Тривень</option>
+            <option value="june">Червень</option>
+            <option value="july">Липень</option>
+            <option value="august">Серпень</option>
+            <option value="september">Вересень</option>
+            <option value="october">Жовтень</option>
+            <option value="november">Листопад</option>
+            <option value="december">Грудень</option>
+          </select>
+          <select onChange={saveYear}>
+            <option value="default">Обрати рік</option>
+            {yearsData && yearsData.map((year, index) => (
+              <option key={index} value={year}
+              >{year}
+              </option>
+            ))}
+          </select>
+          <button type='submit'>Вивести дані</button>
+          {error && <p className='error'>{error}</p>}
         </div>
       </form>
     </>
